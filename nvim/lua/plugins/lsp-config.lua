@@ -37,6 +37,7 @@ return {
         end,
       })
 
+      -- SVELTE AUTO GENERATED TYPES -- START
       local function on_attach(on_attach)
         vim.api.nvim_create_autocmd("LspAttach", {
           callback = function(args)
@@ -57,7 +58,7 @@ return {
           end,
         })
       end)
-
+      -- SVELTE AUTO GENERATED TYPES -- END
       lspconfig.svelte.setup({
         capabilities = capabilities,
       })
