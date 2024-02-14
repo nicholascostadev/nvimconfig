@@ -1,5 +1,17 @@
 return {
 	{
+		"NvChad/nvim-colorizer.lua",
+		dependencies = {
+			{ "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+		},
+		lazy = false,
+		opts = {
+			user_default_options = {
+				tailwind = true,
+			},
+		},
+	},
+	{
 		"williamboman/mason.nvim",
 		lazy = false,
 		config = function()
@@ -30,6 +42,7 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
+
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
 				on_attach = function(client)
@@ -38,17 +51,17 @@ return {
 			})
 
 			-- SVELTE AUTO GENERATED TYPES -- START
-			local function on_attach(on_attach)
+			local function on_attach(on_attach2)
 				vim.api.nvim_create_autocmd("LspAttach", {
 					callback = function(args)
 						local buffer = args.buf
 						local client = vim.lsp.get_client_by_id(args.data.client_id)
-						on_attach(client, buffer)
+						on_attach2(client, buffer)
 					end,
 				})
 			end
 
-			on_attach(function(client, bufnr)
+			on_attach(function(client)
 				vim.api.nvim_create_autocmd("BufWritePost", {
 					pattern = { "*.js", "*.ts" },
 					callback = function(ctx)
@@ -58,10 +71,16 @@ return {
 					end,
 				})
 			end)
+
 			-- SVELTE AUTO GENERATED TYPES -- END
 			lspconfig.svelte.setup({
 				capabilities = capabilities,
+				flags = {
+					debounce_text_changes = 150,
+				},
 			})
+
+			lspconfig.tailwindcss.setup({})
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),

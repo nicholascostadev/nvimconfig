@@ -12,7 +12,7 @@ return {
         null_ls.builtins.diagnostics.eslint_d.with({
           extra_filetypes = { "svelte" },
         }),
-        null_ls.builtins.formatting.prettierd.with({
+        null_ls.builtins.formatting.prettier.with({
           extra_filetypes = { "svelte" },
         }),
         null_ls.builtins.formatting.prismaFmt,
