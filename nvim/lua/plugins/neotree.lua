@@ -15,6 +15,11 @@ return {
 				width = 30,
 			},
 			close_if_last_window = true,
+			filesystem = {
+				follow_current_file = {
+					enabled = true,
+				},
+			},
 		})
 
 		vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
