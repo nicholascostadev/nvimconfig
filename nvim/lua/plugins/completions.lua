@@ -10,7 +10,7 @@ return {
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "rafamadriz/friendly-snippets",
-      "roober/tailwindcss-colorizer-cmp.nvim",
+      "roobert/tailwindcss-colorizer-cmp.nvim",
     },
     config = function()
       local cmp = require("cmp")
