@@ -50,6 +50,16 @@ return {
 				end,
 			})
 
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+				root_dir = require("lspconfig/util").root_pattern("Cargo.toml"),
+				settings = {
+					["rust-analyzer"] = {
+						allFeatures = true,
+					},
+				},
+			})
+
 			-- SVELTE AUTO GENERATED TYPES -- START
 			local function on_attach(on_attach2)
 				vim.api.nvim_create_autocmd("LspAttach", {
