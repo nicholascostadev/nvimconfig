@@ -9,15 +9,15 @@ return {
     null_ls.setup({
       sources = {
         null_ls.builtins.formatting.stylua,
-        null_ls.builtins.diagnostics.eslint_d.with({
-          extra_filetypes = { "svelte" },
-        }),
-        null_ls.builtins.code_actions.eslint_d.with({
-          extra_filetypes = { "svelte" },
-        }),
-        null_ls.builtins.formatting.eslint_d.with({
-          extra_filetypes = { "svelte" },
-        }),
+        -- null_ls.builtins.diagnostics.eslint_d.with({
+        --   extra_filetypes = { "svelte" },
+        -- }),
+        -- null_ls.builtins.code_actions.eslint_d.with({
+        --   extra_filetypes = { "svelte" },
+        -- }),
+        -- null_ls.builtins.formatting.eslint_d.with({
+        --   extra_filetypes = { "svelte" },
+        -- }),
         null_ls.builtins.formatting.prettier.with({
           extra_filetypes = { "svelte" },
         }),

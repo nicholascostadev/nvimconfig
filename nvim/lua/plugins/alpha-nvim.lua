@@ -6,6 +6,15 @@ return {
 	config = function()
 		local alpha = require("alpha")
 		local dashboard = require("alpha.themes.dashboard")
-		alpha.setup(dashboard.config)
+
+		dashboard.section.buttons.val = {
+			dashboard.button("<Leader>e", "  File Explorer"),
+			dashboard.button("<Leader>ff", "  Find File"),
+			dashboard.button("<Leader>fg", "  Find Word"),
+			dashboard.button("<Leader>sr", "  Restore Session"),
+			dashboard.button("q", "  Quit", ":qa<cr>"),
+		}
+
+		alpha.setup(dashboard.opts)
 	end,
 }
