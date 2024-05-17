@@ -4,4 +4,7 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", {})
 vim.keymap.set("n", "<C-h>", "<C-w>h", {})
 vim.keymap.set("n", "<leader>ch", ":noh<CR>", {})
 
+vim.keymap.set("n", "<leader>ba", ":%bd|e#<CR>", {})
+vim.keymap.set("n", "<leader>bc", ":%bd<CR>", {})
+
 vim.api.nvim_set_option("clipboard", "unnamed")

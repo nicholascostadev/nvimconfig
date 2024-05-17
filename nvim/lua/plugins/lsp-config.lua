@@ -36,11 +36,59 @@ return {
       vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
       vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
+      local handlers = {
+        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+          silent = true,
+        }),
+        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help),
+        ["textDocument/publishDiagnostics"] = vim.lsp.with(
+          vim.lsp.diagnostic.on_publish_diagnostics
+        ),
+      }
+
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
+      })
+
+      lspconfig.eslint.setup({
+        capabilities = capabilities,
+        handlers = handlers,
+        on_attach = function(client, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+          })
+        end,
+        settings = {
+          codeAction = {
+            disableRuleComment = {
+              enable = true,
+              location = "separateLine"
+            },
+            showDocumentation = {
+              enable = true
+            }
+          },
+          codeActionOnSave = {
+            enable = false,
+            mode = "all"
+          },
+          format = true,
+          nodePath = "",
+          onIgnoredFiles = "off",
+          packageManager = "npm",
+          quiet = false,
+          rulesCustomizations = {},
+          run = "onType",
+          useESLintClass = false,
+          validate = "on",
+          workingDirectory = {
+            mode = "location"
+          }
+        }
       })
 
       lspconfig.tsserver.setup({
